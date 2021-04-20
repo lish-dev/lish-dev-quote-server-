@@ -3,6 +3,7 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
+// app.set ("port",process.env.PORT || 3000);
 app.listen(PORT, () => console.log(`Server is listening on ${PORT}`));
 
 //load the quotes JSON
@@ -16,9 +17,8 @@ app.get("/", (req, res) =>
   res.send("<h1>Elisha's Quote Server!!  Ask me for quotes or random quotes</h1>"));
 
 
-  app.get("/quotes", function(req, res) {
-    res.json(quotes)
-  });
+  app.get("/quotes", (req, res)=> 
+    res.json(quotes));
   
   
 //You can use this function to pick one element at random from a given array
@@ -26,15 +26,13 @@ app.get("/", (req, res) =>
 //example: pickFromArray(myContactsArray)
 //
 
-app.get("/quotes/random", function(req, res) {
+const randomQuote = pickFromArray(quotes)
+app.get("/quotes/random", (req, res) =>
+  res.json(randomQuote));
 
-  const randomQuote = pickFromArray(quotes)
-  res.json(randomQuote)
-
-  function pickFromArray(arr) {
-    return arr[Math.floor(Math.random() * arr.length)];
-  }
-});
+function pickFromArray(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
 
 
 //Start our server so that it listens for HTTP requests!
