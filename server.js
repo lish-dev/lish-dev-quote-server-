@@ -26,13 +26,15 @@ app.get("/", (req, res) =>
 //example: pickFromArray(myContactsArray)
 //
 
-const randomQuote = pickFromArray(quotes)
-app.get("/quotes/random", (req, res) =>
-  res.json(randomQuote));
+app.get("/quotes/random", (req, res) =>{
 
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+  const randomQuote = pickFromArray(quotes)
+  res.json(randomQuote)
+
+  function pickFromArray(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+});
 
 
 //Start our server so that it listens for HTTP requests!
