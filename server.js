@@ -38,4 +38,6 @@ app.get("/quotes/random", (req, res) =>{
 
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, () => console.log(`Your app is listening on port " + ${listener}.address().port)`));
+const listener = app.listen(5555, function () {
+  console.log("Your app is listening on port " + listener.address().port);
+});
