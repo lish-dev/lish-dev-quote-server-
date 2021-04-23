@@ -38,15 +38,10 @@ app.get("/quotes/search", (req, res) => {
       quotes1.author.toLowerCase().includes(searchTerm.toLowerCase())
     )
       return quotes1;
-    })
+  });
 
-    
-  res.json(searchResult)
-    
-    
+  res.json(searchResult);
 });
-
-
 
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(5555, function () {
